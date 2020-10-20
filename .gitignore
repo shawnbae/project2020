@@ -3,13 +3,8 @@ dataset/
 */dataset/*
 images/
 baekseo/
-
-# Created by https://www.gitignore.io/api/venv,python,jupyternotebooks
-# Edit at https://www.gitignore.io/?templates=venv,python,jupyternotebooks
-
-### JupyterNotebooks ###
-# gitignore template for Jupyter Notebooks
-# website: http://jupyter.org/
+*.csv
+instagram_crawl_image/
 
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
