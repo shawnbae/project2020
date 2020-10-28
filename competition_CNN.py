@@ -1,9 +1,12 @@
 import os
+import zipfile
 import numpy as np
 import pandas as pd
 from PIL import Image
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import tensorflow as tf
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.layers import Input, Dense, Conv2D, MaxPooling2D, Flatten
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
@@ -41,31 +44,18 @@ trainY= pd.Categorical(trainY).rename_categories(np.arange(20))
 trainY= to_categorical(trainY, num_classes=20)
 
 
-# 모델 짜기
-nHeight= 256
-nWidth= 256
-
-xInput = Input(batch_shape=(None, nHeight, nWidth, 3))
-xConv1 = Conv2D(filters=32, kernel_size=(8,1), strides=1, padding = 'same', activation='relu')(xInput)
-xPool1 = MaxPooling2D(pool_size=(2,1), strides=1, padding='valid')(xConv1)
-xConv2 = Conv2D(filters=10, kernel_size=(8,1), strides=1, padding = 'same', activation='relu')(xPool1)
-xPool2 = MaxPooling2D(pool_size=(2,1), strides=1, padding='valid')(xConv2)
-xFlat = Flatten()(xPool2)
-yOutput= Dense(20, activation= 'softmax')(xFlat)
-
-model= Model(xInput, yOutput)
-model.compile(loss='sparse_categorical_crossentropy', optimizer=Adam(lr=0.005))
-model.fit(trainX, np.array(trainY))
-
 # pretrained model 사용하기
-pretrained_model= tf.keras.applications.Xception(include_top=True, weights=None,\
+pretrained_model= tf.keras.applications.VGG19(include_top=True, weights=None,\
                                                  classes= 20, input_shape=(256,256,3))
-
 pretrained_model.compile(optimizer= Adam(lr= 0.005), loss= 'categorical_crossentropy')
-pretrained_model.fit(trainX,trainY)
-  
+pretrained_model.fit(trainX,trainY, epochs= 10)
 
-pretrained_model2= tf.keras.applications.resnet50.ResNet50(weights='imagenet')
+
+pretrained_model2= tf.keras.applications.resnet50.ResNet50(include_top=True, weights=None,\
+                                                 classes= 20, input_shape=(256,256,3))
+pretrained_model2.compile(optimizer= Adam(lr= 0.005), loss= 'categorical_crossentropy')
+pretrained_model2.fit(trainX,trainY, epochs= 10)
+
 pred= pretrained_model.predict(trainX)
 
 
