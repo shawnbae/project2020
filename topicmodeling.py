@@ -20,4 +20,9 @@ print(topic_nums)
 
 model.get_topics()[0]
 
-model.generate_topic_wordcloud(0)
+for topic in topic_nums[:10]:
+    model.generate_topic_wordcloud(topic)
+
+
+
+
