@@ -6,7 +6,8 @@ baekseo/
 *.csv
 instagram_crawl_image/
 NIPA_하반기 경진대회_사전검증/
-
+bert/
+uncased_L-12_H-768_A-12.zip
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
