@@ -1,7 +1,7 @@
 from tensorflow.keras.layers import Input, LSTM, Dense, Dot
 from tensorflow.keras.layers import Activation, Concatenate
 from tensorflow.keras.layers import Embedding, TimeDistributed
-from tensorflow.keras.models import Model
+from tensorflow.keras.models import Model, save_model
 from tensorflow.keras import optimizers
 import tensorflow.keras.backend as K
 import matplotlib.pyplot as plt
@@ -84,7 +84,8 @@ plt.ylabel("loss")
 plt.show()
 
 # 학습 결과 저장
-model.save_weights(MODEL_PATH)
-
-    
+save_model(model_enc, './dataset/model_enc')
+save_model(model_dec, './dataset/model_dec')
+save_model(model, MODEL_PATH)
+     
     
