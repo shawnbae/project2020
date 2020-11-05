@@ -30,7 +30,7 @@ MODEL_PATH = './dataset/Attention.h5'
 LOAD_MODEL = False
 
 
-def Attention(x, y):.
+def Attention(x, y):
     score = Dot(axes=(2, 2))([y, x])
     
     dist = Activation('softmax')(score)
