@@ -84,8 +84,8 @@ plt.ylabel("loss")
 plt.show()
 
 # 학습 결과 저장
-save_model(model_enc, './dataset/model_enc')
-save_model(model_dec, './dataset/model_dec')
+save_model(model_enc, './dataset/model_enc.h5')
+save_model(model_dec, './dataset/model_dec.h5')
 save_model(model, MODEL_PATH)
      
     
