@@ -10,6 +10,8 @@ bert/
 uncased_L-12_H-768_A-12.zip
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
+*.sqlite3
+*/py37/*
 
 # IPython
 profile_default/
