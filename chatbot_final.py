@@ -5,6 +5,7 @@ from tensorflow.keras.models import Model
 import tensorflow.keras.backend as K
 import numpy as np
 import pickle5 as pickle
+import tensorflow
 
 import sys
 sys.getdefaultencoding() 
